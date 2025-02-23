@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <div class="taskContainer">
+    <!-- <h4>Take Class</h4>
+    <h4>Go out to walk</h4>
+    <h4>Do Assignments</h4> -->
+    
+    </div>
+    <div>
+        <input type="text" placeholder="Add your todo here..." name="" id="">
+        <button onclick="addToDo()">Add Todo</button>
+    </div>
+
+
+
+    <script>
+        const taskContainer = document.querySelector('.taskContainer')
+        const inputEle = document.querySelector('input');
+
+
+        let counter = 1;
+        function deleteTask(id){
+            const ele = document.getElementById("todo-"+id);
+            // ele.parentNode.removeChild(ele);
+            if(ele){
+                ele.remove();
+            }
+        }
+        function addToDo(){
+            const toDoTask = inputEle.value.trim();
+            if(!toDoTask){
+
+            }else{
+            
+            const taskEle = document.createElement('h4');
+            taskEle.setAttribute("id",`todo-${counter}`)
+            taskEle.innerHTML = "<span>"+toDoTask+"</span> <button onclick='deleteTask("+ counter +")' >Delete</button>";
+            counter++;
+            taskContainer.appendChild(taskEle);
+            inputEle.value=''
+            }
+        }
+    </script>
+</body>
+</html>
